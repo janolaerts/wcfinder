@@ -1,14 +1,25 @@
 {% extends 'base_layout.html' %}
+{% load static %}
 
 {% block wclist %}
 
-  <div class="toilets">
-  {% for toilet in toilets %}
-    <div class="toilet-wrapper">
-      <h1>{{ toilet.reference }}</h1>
-      <p>{{ toilet.street }} {{ toilet.number }}, {{ toilet.city }}, {{ toilet.country }}</p>
-    </div>
-  {% endfor %}
+  <div class="row toilets">
+    {% for toilet in toilets %}
+      <div class="col s12 m6 l4">
+        <div class="card">
+          <div class="card-image">
+            <img src="{% static 'toilet.png' %}">
+          </div>
+          <div class="card-content">
+            <span class="card-title">{{ toilet.reference }}</span>
+            <p>{{ toilet.street }} {{ toilet.number }}, {{ toilet.city }}</p>
+          </div>
+          <div class="card-action">
+            <a href="">More info</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
   </div>
 
 {% endblock %}

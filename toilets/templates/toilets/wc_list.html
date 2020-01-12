@@ -1,0 +1,14 @@
+{% extends 'base_layout.html' %}
+
+{% block wclist %}
+
+  <div class="toilets">
+  {% for toilet in toilets %}
+    <div class="toilet-wrapper">
+      <h1>{{ toilet.reference }}</h1>
+      <p>{{ toilet.street }} {{ toilet.number }}, {{ toilet.city }}, {{ toilet.country }}</p>
+    </div>
+  {% endfor %}
+  </div>
+
+{% endblock %}

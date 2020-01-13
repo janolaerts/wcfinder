@@ -43,6 +43,11 @@
       const sidenav = document.querySelector('.sidenav'); 
       M.Sidenav.init(sidenav, {edge:'left'}); 
     })
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const elems = document.querySelectorAll('.dropdown-trigger');
+      const instances = M.Dropdown.init(elems);
+    });
   </script>
 </body>
 </html>

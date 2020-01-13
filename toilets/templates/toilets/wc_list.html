@@ -3,13 +3,27 @@
 
 {% block wclist %}
 
-  <div class="row toilets" style="position: relative; top: 10px;">
+  <div class="container center-align">
+
+    <a class='dropdown-trigger btn-large red lighten-2' href='#' data-target='cities' style="position: relative; top: 15px;">Select a city</a>
+
+    <form action="" method="POST">
+      <ul class="dropdown-content" id="cities">
+        {% for city in cities %}
+          <li>{{ city }}</li>
+        {% endfor %}
+      </ul>
+    </form>
+
+  </div>
+
+  <div class="row" style="position: relative; top: 10px;">
     {% for toilet in toilets %}
-      <div class="col s12 m6 l4" style="background: #e57373; border-radius: 20px; height: 125px; margin-top: 15px; border: 5px solid white;">
-        <img src="{% static 'tissue-paper.svg' %}" style="width: 90px; margin-top: 15px;">
+      <div class="col s12 m6 l4 toilet" style="background: #e57373; border-radius: 20px; height: 125px; margin-top: 15px; border: 5px solid white; cursor: pointer;">
+        <img src="{% static 'tissue-paper.svg' %}" style="width: 70px; margin-top: 20px;">
         <div class="info" style="float: right;">
-          <h4 class="white-text">{{ toilet.reference }}</h4>
-          <p class="grey-text text-lighten-4" style="float: right;">{{ toilet.street }} {{ toilet.number }}</p>
+          <h4 class="white-text" style="padding: 0px;">{{ toilet.reference }}</h4>
+          <p class="grey-text text-lighten-4" style="float: right;">{{ toilet.street }} {{ toilet.number }}, {{ toilet.city }}</p>
         </div>
       </div>
     {% endfor %}

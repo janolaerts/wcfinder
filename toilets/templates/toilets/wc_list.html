@@ -3,16 +3,19 @@
 
 {% block wclist %}
 
-  <div class="container center-align">
-
-    <a class='dropdown-trigger btn-large red lighten-2' href='#' data-target='cities' style="position: relative; top: 15px;">Select a city</a>
+  <div class="container">
 
     <form action="" method="POST">
-      <ul class="dropdown-content" id="cities">
-        {% for city in cities %}
-          <li>{{ city }}</li>
-        {% endfor %}
-      </ul>
+      <div class="input-field" style="width: 65%; padding: 0; display: inline-block;">
+        <select class="left">
+          {% for city in cities %}
+            <option value="{{ city }}">{{ city }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button class="btn-large red lighten-2 right" style="position: relative; top: 15px;" value="submit">
+        <i class="material-icons">search</i>
+      </button>
     </form>
 
   </div>

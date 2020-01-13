@@ -6,7 +6,7 @@ class Toilet(models.Model):
   city = models.CharField(max_length = 20, default = None)
   street = models.CharField(max_length = 50, default = None)
   number = models.IntegerField(default = None)
-  reference = models.TextField()
+  reference = models.CharField(max_length = 14)
   picture = models.ImageField(default = 'default.png', blank = True)
 
   def __str__(self):

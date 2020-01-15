@@ -13,8 +13,6 @@ def filter_cities(toilet):
     #return False
 
 def wclist_view(request):
-  toilet_list = Toilet.objects.all()
-  cities = list(map(filter_cities, toilet_list))
-  filtered_cities = list(set(cities))
-  print(request.GET.get('city'))
-  return render(request, 'toilets/wc_list.html', { 'toilets': toilet_list, 'cities': filtered_cities })
+  city = request.GET.get('city')
+  toilet_list = Toilet.objects.filter(city=city)
+  return render(request, 'toilets/wc_list.html', { 'toilets': toilet_list})

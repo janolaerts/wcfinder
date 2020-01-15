@@ -16,7 +16,7 @@
   <div class="navbar-fixed">
     <nav class="nav-wrapper red-lighten-2">
       <div class="container"> 
-        <a href="/" class="brand-logo" style="font-family: 'Pacifico', cursive; color: #fafafa;">Find a toilet</a> 
+        <a href="/" class="brand-logo">Find a toilet</a> 
         <a href="#" class="sidenav-trigger" data-target="mobile-menu">
           <i class="material-icons">menu</i>
         </a> 
@@ -43,11 +43,6 @@
       const sidenav = document.querySelector('.sidenav'); 
       M.Sidenav.init(sidenav, {edge:'left'}); 
     })
-
-    // document.addEventListener('DOMContentLoaded', () => {
-    //   const elems = document.querySelectorAll('.dropdown-trigger');
-    //   const instances = M.Dropdown.init(elems);
-    // });
 
     document.addEventListener('DOMContentLoaded', function() {
       let elems = document.querySelectorAll('select');

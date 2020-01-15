@@ -5,31 +5,16 @@
 
   <div class="container">
 
-    <form action="/" method="POST">
-      <div class="input-field" style="width: 65%; padding: 0; display: inline-block;">
-        <select class="left">
-          {% for city in cities %}
-            <option value="{{ city }}">{{ city }}</option>
-          {% endfor %}
-        </select>
-      </div>
-      <button class="btn-large red lighten-2 right" style="position: relative; top: 15px;" value="submit">
-        <i class="material-icons">search</i>
-      </button>
-      {% csrf_token %}
-    </form>
-
-  <div class="row" style="position: relative; top: 10px;">
-    {% for toilet in toilets %}
-      <div class="col s12 m6 l4" style="background: #e57373; border-radius: 20px; height: 125px; margin-top: 15px; border: 5px solid white; cursor: pointer;">
-        <!--<img src="{% static 'tissue-paper.svg' %}" style="width: 70px; margin-top: 20px;">-->
-        <div class="info">
-          <h1 class="white-text" style="font-size: 25px;">{{ toilet.street }} {{ toilet.number }}</h1>
-          <p class="grey-text text-lighten-4" style="position: relative; bottom: 10px;">{{ toilet.reference }}</p>
+    <div class="row toilets-container">
+      {% for toilet in toilets %}
+        <div class="col s12 m6 l4 toilet">
+          <div class="info">
+            <h1 class="white-text">{{ toilet.street }} {{ toilet.number }}</h1>
+            <p class="grey-text text-lighten-4">{{ toilet.reference }}</p>
+          </div>
         </div>
-      </div>
-    {% endfor %}
-  </div>
+      {% endfor %}
+    </div>
 
 </div>
 

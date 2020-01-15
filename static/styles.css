@@ -1,4 +1,39 @@
-body{
-  background: black;
-  color: blue;
+.brand-logo{
+  font-family: 'Pacifico', cursive; 
+  color: #fafafa;
+}
+
+.cities-container h1{
+  text-decoration: underline;
+}
+
+.cities-container .row div{
+  margin: 20px 0px;
+}
+
+.cities-container .row div button {
+  width: 100%;
+}
+
+.toilets-container{
+  position: relative; 
+  top: 10px;
+}
+
+.toilets-container .toilet{
+  background: #e57373; 
+  border-radius: 20px; 
+  height: 125px; 
+  margin-top: 15px; 
+  border: 5px solid white; 
+  cursor: pointer;
+}
+
+.toilets-container .toilet .info h1{
+  font-size: 25px;
+}
+
+.toilets-container .toilet .info p{
+  position: relative; 
+  bottom: 10px;
 }

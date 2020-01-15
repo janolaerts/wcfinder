@@ -8,4 +8,4 @@ def citylist_view(request):
   toilet_list = Toilet.objects.all()
   cities = list(map(filter_cities, toilet_list))
   filtered_cities = list(set(cities))
-  return render(request, 'city_list.html', { 'cities': filtered_cities })
+  return render(request, 'city_list.html', { 'cities': sorted(filtered_cities) })

@@ -3,14 +3,20 @@
 
 {% block wclist %}
 
-  <div class="container">
+  <div class="container cities-container">
 
     <h1 class="center-align red-text text-lighten-2">Which city are you in?</h1>
 
     <div class="cities center-align">
-      {% for city in cities %}
-        <a href="/toilet-list/?city={{ city }}"><button class="btn-large">{{ city }}</button></a>
-      {% endfor %}
+      <div class="row">
+        {% for city in cities %}
+          <div class="col s6 m4 l3">
+            <a href="/toilet-list/?city={{ city }}">
+              <button class="btn-large">{{ city }}</button>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
     </div>
 
   </div>

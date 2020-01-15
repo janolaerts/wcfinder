@@ -7,19 +7,11 @@
 
     <h1 class="center-align red-text text-lighten-2">Which city are you in?</h1>
 
-      <form action="/" method="POST">
-        <div class="input-field" style="width: 65%; padding: 0; display: inline-block;">
-          <select class="left">
-            {% for city in cities %}
-              <option value="{{ city }}">{{ city }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <button class="btn-large red lighten-2 right" style="position: relative; top: 15px;" value="submit">
-          <i class="material-icons">search</i>
-        </button>
-        {% csrf_token %}
-      </form>
+    <div class="cities center-align">
+      {% for city in cities %}
+        <a href="/toilet-list/?city={{ city }}"><button class="btn-large">{{ city }}</button></a>
+      {% endfor %}
+    </div>
 
   </div>
 

@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from . models import Toilet
-from django.http import HttpResponse
 
 # Create your views here.
 def filter_cities(toilet):
@@ -17,4 +16,5 @@ def wclist_view(request):
   toilet_list = Toilet.objects.all()
   cities = list(map(filter_cities, toilet_list))
   filtered_cities = list(set(cities))
+  print(request.GET.get('city'))
   return render(request, 'toilets/wc_list.html', { 'toilets': toilet_list, 'cities': filtered_cities })

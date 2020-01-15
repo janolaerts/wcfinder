@@ -20,20 +20,25 @@
   top: 10px;
 }
 
-.toilets-container .toilet{
-  background: #e57373; 
-  border-radius: 20px; 
-  height: 125px; 
-  margin-top: 15px; 
-  border: 5px solid white; 
+.toilets-container{
+  margin-top: 50px;
+}
+
+.toilets-container .card{
+  border: 2px solid #e57373;
   cursor: pointer;
+  height: 200px;
+  border-radius: 4px;
 }
 
-.toilets-container .toilet .info h1{
+.toilets-container .card .card-content h1{
   font-size: 25px;
+  position: relative;
+  top: -40px;
 }
 
-.toilets-container .toilet .info p{
-  position: relative; 
-  bottom: 10px;
+.toilets-container .card .card-content p{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }

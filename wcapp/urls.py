@@ -12,6 +12,7 @@ urlpatterns = [
     path('', views.citylist_view),
     path('toilet-list/', toilets_views.wclist_view),
     path('toilets/', include('toilets.urls')),
+    path('add-toilet/', toilets_views.add_toilet_view),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

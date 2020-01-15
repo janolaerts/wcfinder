@@ -3,9 +3,15 @@
 
 {% block addtoilet %}
 
-  <div class="container">
+  <div class="container add-toilet-container">
 
-    {{ form }}
+    <form method="POST">
+      {% csrf_token %}
+      {{ form }}
+      <div class="submit-button-wrapper center-align">
+        <input class="btn-large" type="submit" value="Add Toilet">
+      </div>
+    </form>
 
   </div>
 

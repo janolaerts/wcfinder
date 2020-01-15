@@ -1,0 +1,19 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block toiletadded %}
+
+  <div class="container added-toilet-container">
+
+    <h1 class="red-text text-lighten-2 center-align">You added the following toilet:</h1>
+
+    <div class="card center-align">
+      <div class="card-content">
+        <h1 class="red-text text-lighten-2">{{ toilet.street }} {{ toilet.number }}, {{ toilet.city }}</h1>
+        <p class="red-text text-lighten-2">Reference: {{ toilet.reference }}</p>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

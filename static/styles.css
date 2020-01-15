@@ -42,3 +42,26 @@
   bottom: 20px;
   right: 20px;
 }
+
+.add-toilet-container form label{
+  color: #e57373;
+  font-size: 20px;
+}
+
+.add-toilet-container form ul{
+  color: #e57373;
+}
+
+.added-toilet-container h1{
+  font-size: 45px;
+}
+
+.added-toilet-container .card{
+  border: 2px solid #e57373;
+}
+
+.added-toilet-container .card .card-content h1{
+  font-size: 30px;
+  position: relative;
+  top: -35px;
+}

@@ -52,6 +52,10 @@
   color: #e57373;
 }
 
+.add-toilet-container form input[type=checkbox]{
+  border: 2px solid red;
+}
+
 .added-toilet-container h1{
   font-size: 45px;
 }
@@ -64,4 +68,9 @@
   font-size: 30px;
   position: relative;
   top: -35px;
+}
+
+input[type=checkbox]
+{
+  -webkit-appearance:checkbox;
 }

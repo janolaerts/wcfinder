@@ -53,11 +53,18 @@
   color: #e57373;
 }
 
+.add-toilet-container form .clean{
+  display: inline-block;
+}
+
+.add-toilet-container form .accessible{
+  display: inline-block;
+}
+
 .add-toilet-container form input[type='checkbox']{
   opacity: 0;
   pointer-events: all;
   position: relative;
-  margin-left: 10px;
 }
 
 .add-toilet-container form label[for="id_clean"]::before, .add-toilet-container form label[for="id_accessible"]::before{
@@ -109,7 +116,7 @@
 }
 
 .add-toilet-container form label[for="id_accessible"]{
-  margin-left: 20px;
+  left: 50px;
   position: relative;
 }
 

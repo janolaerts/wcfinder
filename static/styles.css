@@ -46,14 +46,79 @@
 .add-toilet-container form label{
   color: #e57373;
   font-size: 20px;
+  display: inline-block;
 }
 
 .add-toilet-container form ul{
   color: #e57373;
 }
 
-.add-toilet-container form input[type=checkbox]{
-  border: 2px solid red;
+.add-toilet-container form input[type='checkbox']{
+  opacity: 0;
+  pointer-events: all;
+  position: relative;
+  margin-left: 10px;
+}
+
+.add-toilet-container form label[for="id_clean"]::before, .add-toilet-container form label[for="id_accessible"]::before{
+  content: "";
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  border: 2px solid #e57373;
+  position: absolute;
+  top: 10px;
+}
+
+.add-toilet-container form label[for="id_clean"]::before{
+  left: 60px;
+}
+
+.add-toilet-container form label[for="id_accessible"]::before{
+  left: 108px;
+}
+
+.add-toilet-container form label[for="id_clean"]::after{
+  content: none;
+  display: inline-block;
+  height: 6px;
+  width: 9px;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 14px;
+  left: 63px;
+}
+
+.add-toilet-container form label[for="id_accessible"]::after{
+  content: none;
+  display: inline-block;
+  height: 6px;
+  width: 9px;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 14px;
+  left: 111px;
+}
+
+.add-toilet-container form label[for="id_clean"]{
+  position: relative;
+}
+
+.add-toilet-container form label[for="id_accessible"]{
+  margin-left: 20px;
+  position: relative;
+}
+
+input[type="checkbox"] + label::after{
+  content: none;
+}
+
+input[type="checkbox"]:checked + label::after{
+  content: "";
 }
 
 .added-toilet-container h1{
@@ -68,9 +133,4 @@
   font-size: 30px;
   position: relative;
   top: -35px;
-}
-
-input[type=checkbox]
-{
-  -webkit-appearance:checkbox;
 }

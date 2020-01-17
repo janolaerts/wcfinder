@@ -17,11 +17,8 @@ def add_toilet_view(request):
   if request.method == 'POST':
     if form.is_valid():
       toilet = form.save()
-      #clean = request.GET.get('clean')
-      #accessible = request.GET.get('accessible')
-      #print(clean, accessible)
-      print(request.POST.get('clean'))
-      print(request.POST.get('accessible'))
+      #clean = request.POST.get('clean')
+      #wheelchair = request.POST.get('accessible')
       return render(request, 'toilets/toilet_added.html', { 'toilet': toilet })
       
   return render(request, 'toilets/add_toilet.html', { 'form': form })

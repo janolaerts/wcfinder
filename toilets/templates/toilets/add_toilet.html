@@ -5,17 +5,17 @@
 
   <div class="container add-toilet-container">
 
-    <form action="?clean=id_clean.value&accessible=id_accessible.value" method="POST">
+    <form method="POST">
       {% csrf_token %}
       {{ form }}
-      <div class="clean">
+      <!--<div class="clean">
         <input type="checkbox" id="id_clean" name="clean">
         <label for="id_clean">Clean</label>
       </div>
       <div class="accessible">
         <input type="checkbox" id="id_accessible" name="accessible">
         <label for="id_accessible">Wheelchair</label>
-      </div>
+      </div>-->
       <div class="submit-button-wrapper center-align">
         <input class="btn-large" type="submit" value="Add Toilet">
       </div>

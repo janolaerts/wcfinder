@@ -8,7 +8,7 @@ class Toilet(models.Model):
   reference = models.CharField(max_length = 14)
   price = models.IntegerField(null = True)
   picture = models.ImageField(default = 'default.png', blank = True)
-  #clean = models.BooleanField(default = False)
+  clean = models.CharField(max_length = 20)
   #accessible = models.BooleanField(default = False)
 
   def __str__(self):

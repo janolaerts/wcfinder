@@ -26,21 +26,34 @@
 
 .toilets-container .card{
   border: 2px solid #e57373;
-  cursor: pointer;
   height: 200px;
   border-radius: 4px;
+}
+
+.toilets-container .card .card-content a{
+  cursor: pointer;
+  position: relative;
+  bottom: -130px;
 }
 
 .toilets-container .card .card-content h1{
   font-size: 25px;
   position: relative;
-  top: -40px;
+  top: -70px;
+}
+
+.toilets-container .card .card-content h2{
+  font-size: 20px;
+  position: relative;
+  margin-left: 75px;
+  bottom: -5px;
 }
 
 .toilets-container .card .card-content p{
   position: absolute;
-  bottom: 20px;
+  bottom: 14px;
   right: 20px;
+  font-size: 20px;
 }
 
 .add-toilet-container form label{
@@ -53,79 +66,16 @@
   color: #e57373;
 }
 
-.add-toilet-container form .clean{
-  display: inline-block;
+.add-toilet-container form textarea{
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
 }
 
-.add-toilet-container form .accessible{
-  display: inline-block;
-}
-
-.add-toilet-container form input[type='checkbox']{
-  opacity: 0;
-  pointer-events: all;
+.add-toilet-container form .submit-button-wrapper{
   position: relative;
-}
-
-.add-toilet-container form label[for="id_clean"]::before, .add-toilet-container form label[for="id_accessible"]::before{
-  content: "";
-  display: inline-block;
-  height: 16px;
-  width: 16px;
-  border: 2px solid #e57373;
-  position: absolute;
-  top: 10px;
-}
-
-.add-toilet-container form label[for="id_clean"]::before{
-  left: 60px;
-}
-
-.add-toilet-container form label[for="id_accessible"]::before{
-  left: 108px;
-}
-
-.add-toilet-container form label[for="id_clean"]::after{
-  content: none;
-  display: inline-block;
-  height: 6px;
-  width: 9px;
-  border-left: 2px solid;
-  border-bottom: 2px solid;
-  transform: rotate(-45deg);
-  position: absolute;
-  top: 14px;
-  left: 63px;
-}
-
-.add-toilet-container form label[for="id_accessible"]::after{
-  content: none;
-  display: inline-block;
-  height: 6px;
-  width: 9px;
-  border-left: 2px solid;
-  border-bottom: 2px solid;
-  transform: rotate(-45deg);
-  position: absolute;
-  top: 14px;
-  left: 111px;
-}
-
-.add-toilet-container form label[for="id_clean"]{
-  position: relative;
-}
-
-.add-toilet-container form label[for="id_accessible"]{
-  left: 50px;
-  position: relative;
-}
-
-input[type="checkbox"] + label::after{
-  content: none;
-}
-
-input[type="checkbox"]:checked + label::after{
-  content: "";
+  top: 20px;
+  margin-bottom: 20px;
 }
 
 .added-toilet-container h1{
@@ -140,4 +90,9 @@ input[type="checkbox"]:checked + label::after{
   font-size: 30px;
   position: relative;
   top: -35px;
+}
+.edit-toilet-container form .submit-button-wrapper{
+  position: relative;
+  top: 20px;
+  margin-bottom: 20px;
 }

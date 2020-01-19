@@ -56,14 +56,27 @@
   font-size: 20px;
 }
 
+.add-toilet-container form{
+  position: relative;
+  top: 100px;
+}
+
+.add-toilet-container .select-wrapper{
+  margin-bottom: 40px;
+}
+
+.add-toilet-container form label[for='id_street']{
+  top: 80px;
+}
+
 .add-toilet-container form label{
   color: #e57373;
   font-size: 20px;
   display: inline-block;
 }
 
-.add-toilet-container form ul{
-  color: #e57373;
+.add-toilet-container form ul.errorlist{
+  display: none;
 }
 
 .add-toilet-container form textarea{

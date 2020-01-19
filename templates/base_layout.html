@@ -23,8 +23,7 @@
         <ul class="right hide-on-med-and-down">
           <li><a href="/">Home</a></li>
           <li><a href="/toilets/add-toilet">Add Toilet</a></li>
-          <li><a href="">Signup</a></li>
-          <li><a href="">Login</a></li>
+          <li><a href="/toilets/map">Map</a></li>
         </ul>
       </div>
     </nav>
@@ -33,8 +32,7 @@
   <ul class="sidenav" id="mobile-menu">
     <li><a href="/">Home</a></li>
     <li><a href="/toilets/add-toilet">Add Toilet</a></li>
-    <li><a href="">Signup</a></li>
-    <li><a href="">Login</a></li>
+    <li><a href="/toilets/map">Map</a></li>
   </ul>
   {% block wclist %}
   {% endblock %}
@@ -42,10 +40,10 @@
   {% block addtoilet %}
   {% endblock %}
 
-  {% block edittoilet %}
+  {% block toiletadded %}
   {% endblock %}
 
-  {% block toiletadded %}
+  {% block map %}
   {% endblock %}
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

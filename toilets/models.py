@@ -10,4 +10,4 @@ class Toilet(models.Model):
   remarks = models.TextField(default = 'No remarks')
 
   def __str__(self):
-    return f'{self.street} {self.number}, {self.city}, ({self.reference})'
+    return f'{self.street} {self.number}, {self.city}, ({self.reference}), {self.price}, {self.remarks}'

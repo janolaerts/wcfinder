@@ -8,7 +8,7 @@ class AddToilet(forms.ModelForm):
     model = models.Toilet
     fields = ['city', 'street', 'number', 'reference', 'price', 'remarks' ]
 
-class UpdateToilet(forms.ModelForm):
-  class Meta:
-    model = models.Toilet
-    fields = ['city', 'street', 'number', 'reference', 'price', 'remarks' ]
+#class UpdateToilet(forms.ModelForm):
+  #class Meta:
+    #model = models.Toilet
+    #fields = ['city', 'street', 'number', 'reference', 'price', 'remarks' ]

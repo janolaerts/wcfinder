@@ -3,6 +3,7 @@ from . models import Toilet
 from . import forms
 from django.http import HttpResponse
 import folium
+from  geopy.geocoders import Nominatim
 
 # Create your views here.
 def filter_cities(toilet):
@@ -32,11 +33,20 @@ def delete_toilet_view(request):
   return render(request, 'toilets/wc_list.html', { 'toilets': toilet_list })
 
 def map_view(request):
-  toilets = Toilet.objects.all()
-
   # create map object
   map = folium.Map(location = [50.55, 4.50], zoom_start = 9)
   map.save('toilets/templates/toilets/map.html')
-  #renderedMap = map.get_root().render()
+
+  # global tooltip
+  toilets = Toilet.objects.all()
+
+  # create markers
+  for toilet in toilets:
+    address = toilet.street, toilet.number, toilet.city
+    geolocator = Nominatim()
+    address = f'{ toilet.street } { toilet.number } { toilet.city }'
+    location = geolocator.geocode(address)
+    popupHtml = f'<div class="popup-wrapper"> <p>{ toilet.street } { toilet.number }, { toilet.city }</p> <p>Price: €{ toilet.price }</p> <p>Remarks: { toilet.remarks }</p> </div>'
+    folium.Marker([location.latitude, location.longitude], popup=popupHtml, tooltip=f'{ toilet.street } { toilet.number }, { toilet.city }', icon=folium.Icon(color='red', icon='none')).add_to(map)
 
   return render(request, 'toilets/map_view.html', { 'map': map._repr_html_() })

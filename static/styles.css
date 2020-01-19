@@ -58,7 +58,7 @@
 
 .add-toilet-container form{
   position: relative;
-  top: 100px;
+  top: 50px;
 }
 
 .add-toilet-container .select-wrapper{
@@ -67,6 +67,10 @@
 
 .add-toilet-container form label[for='id_street']{
   top: 80px;
+}
+
+.add-toilet-container form label[for='id_wheelchair_accessible']{
+  top: 505px;
 }
 
 .add-toilet-container form label{
@@ -87,8 +91,8 @@
 
 .add-toilet-container form .submit-button-wrapper{
   position: relative;
-  top: 20px;
-  margin-bottom: 20px;
+  top: 5px;
+  margin-bottom: 25px;
 }
 
 .added-toilet-container h1{

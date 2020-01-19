@@ -9,8 +9,8 @@
 
     <div class="card center-align">
       <div class="card-content">
-        <h1 class="red-text text-lighten-2">{{ toilet.street }} {{ toilet.number }}, {{ toilet.city }}</h1>
-        <p class="red-text text-lighten-2">Reference: {{ toilet.reference }}</p>
+        <h1 class="red-text text-lighten-2">{{ toilet.street }} {% if toilet.number %} {{ toilet.number }} {% endif %}, {{ toilet.city }}</h1>
+        {% if toilet.number %}<p class="red-text text-lighten-2">Reference: {{ toilet.reference }}</p> {% endif %}
       </div>
     </div>
 

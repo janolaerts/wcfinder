@@ -34,7 +34,7 @@ def delete_toilet_view(request):
 
 def map_view(request):
   # create map object
-  map = folium.Map(location = [50.55, 4.50], zoom_start = 9)
+  map = folium.Map(location = [50.55, 4.50], zoom_start = 7, width = '100%', height = '100%', control_scale = True)
   map.save('toilets/templates/toilets/map.html')
 
   # global tooltip
@@ -46,7 +46,7 @@ def map_view(request):
     geolocator = Nominatim()
     address = f'{ toilet.street } { toilet.number } { toilet.city }'
     location = geolocator.geocode(address)
-    popupHtml = f'<div class="popup-wrapper"> <p>{ toilet.street } { toilet.number }, { toilet.city }</p> <p>Price: €{ toilet.price }</p> <p>Remarks: { toilet.remarks }</p> </div>'
+    popupHtml = f'<div class="popup-wrapper"> <p>{ toilet.street } { toilet.number }, { toilet.city }</p> <p>Price: €{ toilet.price }</p> </div>'
     folium.Marker([location.latitude, location.longitude], popup=popupHtml, tooltip=f'{ toilet.street } { toilet.number }, { toilet.city }', icon=folium.Icon(color='red', icon='none')).add_to(map)
 
   return render(request, 'toilets/map_view.html', { 'map': map._repr_html_() })

@@ -26,34 +26,28 @@
 
 .toilets-container .card{
   border: 2px solid #e57373;
-  height: 200px;
+  height: auto;
   border-radius: 4px;
+}
+
+.toilets-container .card .card-content .card-title h1{
+  font-size: 25px;
+  margin: 0px 0px 20px 0px;
 }
 
 .toilets-container .card .card-content a{
   cursor: pointer;
-  position: relative;
-  bottom: -130px;
-}
-
-.toilets-container .card .card-content h1{
-  font-size: 25px;
-  position: relative;
-  top: -70px;
+  margin: 0;
+  padding: 0;
+  width: auto;
 }
 
 .toilets-container .card .card-content h2{
   font-size: 20px;
   position: relative;
-  margin-left: 75px;
-  bottom: -5px;
-}
-
-.toilets-container .card .card-content p{
-  position: absolute;
-  bottom: 14px;
-  right: 20px;
-  font-size: 20px;
+  padding: 0;
+  margin: 0px 0px 0px 10px;
+  width: auto;
 }
 
 .add-toilet-container form{
@@ -70,7 +64,13 @@
 }
 
 .add-toilet-container form label[for='id_wheelchair_accessible']{
-  top: 505px;
+  top: 420px;
+}
+
+@media screen and (max-width: 1200px){
+  .add-toilet-container form label[for='id_wheelchair_accessible']{
+    top: 410px;
+  }
 }
 
 .add-toilet-container form label{
@@ -117,4 +117,6 @@
 
 .map-wrapper div div{
   height: 100% !important;
+  position: absolute;
+  margin-top: -56px;
 }

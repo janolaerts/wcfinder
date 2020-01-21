@@ -10,12 +10,21 @@
         <div class="col s12 m6 l4 toilet">
           <div class="card">
             <div class="card-content">
-              <a href="/toilets/delete-toilet/?id={{ toilet.id }}&city={{ toilet.city }}">
-                <i class="material-icons red-text text-lighten-2">delete</i>
-              </a>
-              <h1 class="red-text text-lighten-2">{{ toilet.street }} {{ toilet.number }}</h1>
-              <h2 class="red-text text-lighten-2">€{{ toilet.price }}</h2>
-              <p class="red-text text-lighten-2">{{ toilet.reference }}</p>
+              <div class="card-title">
+                <h1 class="red-text text-lighten-2">{{ toilet.street }} {{ toilet.number }}</h1>
+              </div>
+              {{ map | safe }}
+              <div class="card-action row center-align">
+                <a href="/toilets/delete-toilet/?id={{ toilet.id }}&city={{ toilet.city }}" class="col s2">
+                  <i class="material-icons red-text text-lighten-2">delete</i>
+                </a>
+                <a href="/toilets/edit-toilet/?id={{ toilet.id }}&city={{ toilet.city }}" class="col s2">
+                  <i class="material-icons red-text text-lighten-2">edit</i>
+                </a>
+                <h2 class="red-text text-lighten-2 col s2 push-s2">€{{ toilet.price }}</h2>
+                <i class="material-icons red-text text-lighten-2 col s2 push-s2">wc</i>
+                <i class="material-icons red-text text-lighten-2 col s2 push-s2">accessible</i>
+              </div>
             </div>
           </div>
         </div>

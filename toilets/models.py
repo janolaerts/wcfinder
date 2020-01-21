@@ -33,11 +33,9 @@ class Toilet(models.Model):
   city = models.CharField(max_length = 20, default = 'Antwerp', choices = CITIES_CHOICES)
   street = models.CharField(max_length = 50, default = None)
   number = models.IntegerField(default = None, null = True)
-  reference = models.CharField(max_length = 20, blank = True)
   price = models.FloatField(default = None)
   cleaned = models.CharField(max_length = 3, default = 'Yes', choices = CLEAN_CHOICES)
   wheelchair_accessible = models.CharField(max_length = 3, default = 'Yes', choices = ACCESSIBLE_CHOICES)
-  #remarks = models.TextField(default = 'No remarks')
 
   def __str__(self):
-    return f'{self.street} {self.number}, {self.city}, ({self.reference}), {self.price}'
+    return f'{self.street} {self.number}, {self.city}, {self.price}'

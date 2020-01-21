@@ -7,7 +7,7 @@ class AddToilet(forms.ModelForm):
 
   class Meta:
     model = models.Toilet
-    fields = ['city', 'street', 'number', 'reference', 'price', 'cleaned', 'wheelchair_accessible' ]
+    fields = ['city', 'street', 'number', 'price', 'cleaned', 'wheelchair_accessible' ]
 
 #class UpdateToilet(forms.ModelForm):
   #class Meta:

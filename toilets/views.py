@@ -12,7 +12,20 @@ def filter_cities(toilet):
 def wclist_view(request):
   city = request.GET.get('city')
   toilet_list = Toilet.objects.filter(city=city)
-  return render(request, 'toilets/wc_list.html', { 'toilets': toilet_list })
+
+  for toilet in toilet_list:
+    address = toilet.street, toilet.number, toilet.city
+    geolocator = Nominatim()
+    address = f'{ toilet.street } { toilet.number } { toilet.city }'
+    location = geolocator.geocode(address)
+
+    map = folium.Map(location = [location.latitude, location.longitude], zoom_start = 20, width = '100%', height = '100%', control_scale = False, zoom_control = False)
+    map.save('toilets/templates/toilets/map.html')
+
+    icon = folium.Icon(color='red', icon='none')
+    folium.Marker([location.latitude, location.longitude], icon = icon).add_to(map)
+
+  return render(request, 'toilets/wc_list.html', { 'toilets': toilet_list, 'map': map._repr_html_() })
 
 def add_toilet_view(request):
   form = forms.AddToilet(request.POST)
@@ -34,19 +47,21 @@ def delete_toilet_view(request):
 
 def map_view(request):
   # create map object
-  map = folium.Map(location = [50.55, 4.50], zoom_start = 7, width = '100%', height = '100%', control_scale = True)
+  map = folium.Map(location = [50.55, 4.50], zoom_start = 7, width = '100%', height = '100%', control_scale = True, zoom_control = False)
   map.save('toilets/templates/toilets/map.html')
 
-  # global tooltip
   toilets = Toilet.objects.all()
 
-  # create markers
   for toilet in toilets:
     address = toilet.street, toilet.number, toilet.city
     geolocator = Nominatim()
     address = f'{ toilet.street } { toilet.number } { toilet.city }'
     location = geolocator.geocode(address)
-    popupHtml = f'<div class="popup-wrapper"> <p>{ toilet.street } { toilet.number }, { toilet.city }</p> <p>Price: €{ toilet.price }</p> </div>'
-    folium.Marker([location.latitude, location.longitude], popup=popupHtml, tooltip=f'{ toilet.street } { toilet.number }, { toilet.city }', icon=folium.Icon(color='red', icon='none')).add_to(map)
+
+    icon = folium.Icon(color='red', icon='none')
+    popup = folium.Popup(html = f'<div class="popup-wrapper"> <h4>Location: { toilet.street } { toilet.number }, { toilet.city }</h4> <p>Price: €{ toilet.price }</p> <p>Clean: { toilet.cleaned }</p> <p>Wheelchair: { toilet.wheelchair_accessible }</p> </div>', max_width = 200, min_width = 200)
+    tooltip = f'{ toilet.street } { toilet.number }, { toilet.city }'
+
+    folium.Marker([location.latitude, location.longitude], popup = popup, tooltip = tooltip, icon = icon).add_to(map)
 
   return render(request, 'toilets/map_view.html', { 'map': map._repr_html_() })

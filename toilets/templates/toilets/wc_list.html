@@ -14,16 +14,24 @@
                 <h1 class="red-text text-lighten-2">{{ toilet.street }} {{ toilet.number }}</h1>
               </div>
               {{ map | safe }}
-              <div class="card-action row center-align">
+              <div class="card-action row">
                 <a href="/toilets/delete-toilet/?id={{ toilet.id }}&city={{ toilet.city }}" class="col s2">
                   <i class="material-icons red-text text-lighten-2">delete</i>
                 </a>
                 <a href="/toilets/edit-toilet/?id={{ toilet.id }}&city={{ toilet.city }}" class="col s2">
                   <i class="material-icons red-text text-lighten-2">edit</i>
                 </a>
-                <h2 class="red-text text-lighten-2 col s2 push-s2">€{{ toilet.price }}</h2>
-                <i class="material-icons red-text text-lighten-2 col s2 push-s2">wc</i>
-                <i class="material-icons red-text text-lighten-2 col s2 push-s2">accessible</i>
+
+                <!--<div class="info-wrapper col s6">-->
+                  <h2 class="red-text text-lighten-2 col s2 push-s1">€{{ toilet.price }}</h2>
+                  {% if toilet.cleaned == 'Yes' %}
+                    <i class="material-icons red-text text-lighten-2 col s2 push-s1">star_outline</i>
+                  {% endif %}
+                  {% if toilet.wheelchair_accessible == 'Yes' %}
+                    <i class="material-icons red-text text-lighten-2 col s2 push-s1">accessible</i>
+                  {% endif %}
+                <!--</div>-->
+
               </div>
             </div>
           </div>

@@ -20,12 +20,12 @@ def wclist_view(request):
     location = geolocator.geocode(address)
 
     map = folium.Map(location = [location.latitude, location.longitude], zoom_start = 20, width = '100%', height = '100%', control_scale = False, zoom_control = False)
-    map.save('toilets/templates/toilets/map.html')
+    #map.save('toilets/templates/toilets/map.html')
 
     icon = folium.Icon(color='red', icon='none')
     folium.Marker([location.latitude, location.longitude], icon = icon).add_to(map)
 
-  return render(request, 'toilets/wc_list.html', { 'toilets': toilet_list, 'map': map._repr_html_() })
+    return render(request, 'toilets/wc_list.html', { 'toilets': toilet_list, 'map': map._repr_html_() })
 
 def add_toilet_view(request):
   form = forms.AddToilet(request.POST)

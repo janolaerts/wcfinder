@@ -11,21 +11,23 @@ def filter_cities(toilet):
 
 def wclist_view(request):
   city = request.GET.get('city')
-  toilet_list = Toilet.objects.filter(city=city)
+  toiletList = list(Toilet.objects.filter(city=city))
+  maps = []
 
-  for toilet in toilet_list:
-    address = toilet.street, toilet.number, toilet.city
+  for toilet in toiletList:
+    #address = toilet.street, toilet.number, toilet.city
     geolocator = Nominatim()
     address = f'{ toilet.street } { toilet.number } { toilet.city }'
     location = geolocator.geocode(address)
 
     map = folium.Map(location = [location.latitude, location.longitude], zoom_start = 20, width = '100%', height = '100%', control_scale = False, zoom_control = False)
     #map.save('toilets/templates/toilets/map.html')
-
     icon = folium.Icon(color='red', icon='none')
     folium.Marker([location.latitude, location.longitude], icon = icon).add_to(map)
 
-    return render(request, 'toilets/wc_list.html', { 'toilets': toilet_list, 'map': map._repr_html_() })
+    toilet.map = map._repr_html_()
+
+  return render(request, 'toilets/wc_list.html', { 'toilets': toiletList, 'maps': maps })
 
 def add_toilet_view(request):
   form = forms.AddToilet(request.POST)

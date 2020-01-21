@@ -38,4 +38,4 @@ class Toilet(models.Model):
   wheelchair_accessible = models.CharField(max_length = 3, default = 'Yes', choices = ACCESSIBLE_CHOICES)
 
   def __str__(self):
-    return f'{self.street} {self.number}, {self.city}, {self.price}'
+    return f'{self.street} {self.number}, {self.city}, {self.price}, { self.cleaned }, { self.wheelchair_accessible }'

@@ -50,46 +50,46 @@
   width: auto;
 }
 
-.add-toilet-container form{
+.add-toilet-container form, .edit-toilet-container form{
   position: relative;
   top: 50px;
 }
 
-.add-toilet-container .select-wrapper{
+.add-toilet-container .select-wrapper, .edit-toilet-container .select-wrapper{
   margin-bottom: 40px;
 }
 
-.add-toilet-container form label[for='id_street']{
+.add-toilet-container form label[for='id_street'], .edit-toilet-container form label[for='id_street']{
   top: 80px;
 }
 
-.add-toilet-container form label[for='id_wheelchair_accessible']{
+.add-toilet-container form label[for='id_wheelchair_accessible'], .edit-toilet-container form label[for='id_wheelchair_accessible']{
   top: 420px;
 }
 
 @media screen and (max-width: 1200px){
-  .add-toilet-container form label[for='id_wheelchair_accessible']{
+  .add-toilet-container form label[for='id_wheelchair_accessible'], .edit-toilet-container form label[for='id_wheelchair_accessible']{
     top: 410px;
   }
 }
 
-.add-toilet-container form label{
+.add-toilet-container form label, .edit-toilet-container form label{
   color: #e57373;
   font-size: 20px;
   display: inline-block;
 }
 
-.add-toilet-container form ul.errorlist{
+.add-toilet-container form ul.errorlist, .edit-toilet-container form ul.errorlist{
   display: none;
 }
 
-.add-toilet-container form textarea{
+/*.add-toilet-container form textarea{
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
-}
+}*/
 
-.add-toilet-container form .submit-button-wrapper{
+.add-toilet-container form .submit-button-wrapper, .edit-toilet-container form .submit-button-wrapper{
   position: relative;
   top: 5px;
   margin-bottom: 25px;

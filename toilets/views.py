@@ -12,22 +12,19 @@ def filter_cities(toilet):
 def wclist_view(request):
   city = request.GET.get('city')
   toiletList = list(Toilet.objects.filter(city=city))
-  maps = []
 
   for toilet in toiletList:
-    #address = toilet.street, toilet.number, toilet.city
     geolocator = Nominatim()
     address = f'{ toilet.street } { toilet.number } { toilet.city }'
     location = geolocator.geocode(address)
 
     map = folium.Map(location = [location.latitude, location.longitude], zoom_start = 20, width = '100%', height = '100%', control_scale = False, zoom_control = False)
-    #map.save('toilets/templates/toilets/map.html')
     icon = folium.Icon(color='red', icon='none')
     folium.Marker([location.latitude, location.longitude], icon = icon).add_to(map)
 
     toilet.map = map._repr_html_()
 
-  return render(request, 'toilets/wc_list.html', { 'toilets': toiletList, 'maps': maps })
+  return render(request, 'toilets/wc_list.html', { 'toilets': toiletList })
 
 def add_toilet_view(request):
   form = forms.AddToilet(request.POST)
@@ -38,6 +35,26 @@ def add_toilet_view(request):
       return render(request, 'toilets/toilet_added.html', { 'toilet': toilet })
       
   return render(request, 'toilets/add_toilet.html', { 'form': form })
+
+def edit_toilet_view(request):
+  form = forms.EditToilet(request.POST)
+  toilet = request.GET.get('toilet')
+  id = request.GET.get('id')
+
+  toiletToUpdate = Toilet.objects.filter(id = id)
+  print(toiletToUpdate)
+  
+  if request.method == 'POST':
+    if form.is_valid():
+      city = request.POST.get('city')
+      street = request.POST.get('street')
+      number = request.POST.get('number')
+      cleaned = request.POST.get('cleaned')
+      wheelchair_accessible = request.POST.get('wheelchair_accessible')
+
+      toiletToUpdate.update(city = city, street = street, number = number, cleaned = cleaned, wheelchair_accessible = wheelchair_accessible)
+
+  return render(request, 'toilets/edit_toilet.html', { 'form': form })
 
 def delete_toilet_view(request):
   id = request.GET.get('id')

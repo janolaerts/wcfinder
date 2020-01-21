@@ -6,6 +6,7 @@ app_name = 'toilets'
 urlpatterns = [
   path('toilet-list/', views.wclist_view),
   path('add-toilet/', views.add_toilet_view),
+  path('edit-toilet/', views.edit_toilet_view),
   path('delete-toilet/', views.delete_toilet_view),
   path('map/', views.map_view),
 ]

@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block edittoilet %}
+
+  <div class="container edit-toilet-container">
+
+    <form method="POST">
+      {% csrf_token %}
+      {{ form }}
+      <div class="submit-button-wrapper center-align">
+        <input class="btn-large" type="submit" value="Edit Toilet">
+      </div>
+    </form>
+
+  </div>
+
+{% endblock %}

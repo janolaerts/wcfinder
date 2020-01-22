@@ -11,7 +11,7 @@ def filter_cities(toilet):
 
 def wclist_view(request):
   city = request.GET.get('city')
-  toiletList = list(Toilet.objects.filter(city=city))
+  toiletList = list(Toilet.objects.filter(city=city).order_by('street'))
 
   for toilet in toiletList:
     geolocator = Nominatim(timeout=10)
@@ -31,7 +31,7 @@ def add_toilet_view(request):
 
   if request.method == 'POST':
     city = request.POST.get('city')
-    toiletList = Toilet.objects.filter(city=city)
+    toiletList = Toilet.objects.filter(city=city).order_by('street')
 
     if form.is_valid():
       form.save()
@@ -52,7 +52,6 @@ def add_toilet_view(request):
   return render(request, 'toilets/add_toilet.html', { 'form': form })
 
 def edit_toilet_view(request):
-  #form = forms.EditToilet(request.POST)
   id = request.GET.get('id')
   toiletToUpdate = Toilet.objects.filter(id = id)
 
@@ -75,7 +74,7 @@ def edit_toilet_view(request):
 
       toiletToUpdate.update(city = city, street = street, number = number, price_in_EUR = price_in_EUR, cleaned = cleaned, wheelchair_accessible = wheelchair_accessible)
 
-      toiletList = Toilet.objects.filter(city=city)
+      toiletList = Toilet.objects.filter(city=city).order_by('street')
 
       for toilet in toiletList:
         geolocator = Nominatim(timeout=10)
@@ -96,7 +95,7 @@ def delete_toilet_view(request):
   Toilet.objects.filter(id=id).delete()
 
   city = request.GET.get('city')
-  toiletList = Toilet.objects.filter(city=city)
+  toiletList = Toilet.objects.filter(city=city).order_by('street')
 
   for toilet in toiletList:
     geolocator = Nominatim(timeout=10)

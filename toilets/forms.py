@@ -9,6 +9,7 @@ class AddToilet(forms.ModelForm):
     fields = ['city', 'street', 'number', 'price_in_EUR', 'cleaned', 'wheelchair_accessible' ]
 
 class EditToilet(forms.ModelForm):
+
   class Meta:
     model = models.Toilet
     fields = ['city', 'street', 'number', 'price_in_EUR', 'cleaned', 'wheelchair_accessible' ]

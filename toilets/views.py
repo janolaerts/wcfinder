@@ -67,7 +67,7 @@ def edit_toilet_view(request):
     if form.is_valid():
       city = request.POST.get('city')
       street = request.POST.get('street')
-      number = request.POST.get('number')
+      number = request.POST.get('number') if request.POST.get('number') else None
       price_in_EUR = request.POST.get('price_in_EUR')
       cleaned = request.POST.get('cleaned')
       wheelchair_accessible = request.POST.get('wheelchair_accessible')

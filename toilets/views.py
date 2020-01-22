@@ -47,7 +47,6 @@ def add_toilet_view(request):
 
         toilet.map = map._repr_html_()
 
-      #return render(request, 'toilets/toilet_added.html', { 'toilet': toilet })
       return render(request, 'toilets/wc_list.html', { 'toilets': toiletList })
       
   return render(request, 'toilets/add_toilet.html', { 'form': form })

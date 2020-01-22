@@ -1,1 +1,1 @@
-web: gunicorn wcapp.wsgi --log-file
+web: gunicorn wcapp.wsgi --log-file -

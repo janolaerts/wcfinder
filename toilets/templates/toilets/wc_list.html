@@ -11,14 +11,14 @@
           <div class="card">
             <div class="card-content">
               <div class="card-title">
-                <h1 class="red-text text-lighten-2">{{ toilet.street }} {{ toilet.number }}</h1>
+                <h1 class="red-text text-lighten-2">{{ toilet.street }} {% if toilet.number %} {{ toilet.number }} {% endif %}</h1>
               </div>
               {{ toilet.map | safe }}
               <div class="card-action row">
                 <a href="/toilets/delete-toilet/?id={{ toilet.id }}&city={{ toilet.city }}" class="col s2">
                   <i class="material-icons red-text text-lighten-2">delete</i>
                 </a>
-                <a href="/toilets/edit-toilet/?id={{ toilet.id }}&toilet={{ toilet }}" class="col s2">
+                <a href="/toilets/edit-toilet/?id={{ toilet.id }}&city={{ toilet.city }}&street={{ toilet.street }}&number={{ toilet.number }}&price_in_EUR={{ toilet.price_in_EUR }}&cleaned={{ toilet.cleaned }}&wheelchair_accessible={{ toilet.wheelchair_accessible }}" class="col s2">
                   <i class="material-icons red-text text-lighten-2">edit</i>
                 </a>
 

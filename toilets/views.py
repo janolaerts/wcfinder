@@ -30,9 +30,25 @@ def add_toilet_view(request):
   form = forms.AddToilet(request.POST)
 
   if request.method == 'POST':
+    city = request.POST.get('city')
+    toiletList = Toilet.objects.filter(city=city)
+
     if form.is_valid():
-      toilet = form.save()
-      return render(request, 'toilets/toilet_added.html', { 'toilet': toilet })
+      form.save()
+
+      for toilet in toiletList:
+        geolocator = Nominatim(timeout=10)
+        address = f'{ toilet.street } { toilet.number } { toilet.city }'
+        location = geolocator.geocode(address)
+
+        map = folium.Map(location = [location.latitude, location.longitude], zoom_start = 20, width = '100%', height = '100%', control_scale = False, zoom_control = False)
+        icon = folium.Icon(color='red', icon='none')
+        folium.Marker([location.latitude, location.longitude], icon = icon).add_to(map)
+
+        toilet.map = map._repr_html_()
+
+      #return render(request, 'toilets/toilet_added.html', { 'toilet': toilet })
+      return render(request, 'toilets/wc_list.html', { 'toilets': toiletList })
       
   return render(request, 'toilets/add_toilet.html', { 'form': form })
 

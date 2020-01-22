@@ -14,7 +14,7 @@ def wclist_view(request):
   toiletList = list(Toilet.objects.filter(city=city))
 
   for toilet in toiletList:
-    geolocator = Nominatim()
+    geolocator = Nominatim(timeout=10)
     address = f'{ toilet.street } { toilet.number } { toilet.city }'
     location = geolocator.geocode(address)
 
@@ -48,20 +48,22 @@ def edit_toilet_view(request):
     return render(request, 'toilets/edit_toilet.html', { 'form': form } )
   
   if request.method == 'POST':
+    form = forms.EditToilet(request.POST)
+
     if form.is_valid():
       city = request.POST.get('city')
       street = request.POST.get('street')
       number = request.POST.get('number')
-      price = request.POST.get('price')
+      price_in_EUR = request.POST.get('price_in_EUR')
       cleaned = request.POST.get('cleaned')
       wheelchair_accessible = request.POST.get('wheelchair_accessible')
 
-      toiletToUpdate.update(city = city, street = street, number = number, price = price, cleaned = cleaned, wheelchair_accessible = wheelchair_accessible)
+      toiletToUpdate.update(city = city, street = street, number = number, price_in_EUR = price_in_EUR, cleaned = cleaned, wheelchair_accessible = wheelchair_accessible)
 
       toiletList = Toilet.objects.filter(city=city)
 
       for toilet in toiletList:
-        geolocator = Nominatim()
+        geolocator = Nominatim(timeout=10)
         address = f'{ toilet.street } { toilet.number } { toilet.city }'
         location = geolocator.geocode(address)
 
@@ -82,7 +84,7 @@ def delete_toilet_view(request):
   toiletList = Toilet.objects.filter(city=city)
 
   for toilet in toiletList:
-    geolocator = Nominatim()
+    geolocator = Nominatim(timeout=10)
     address = f'{ toilet.street } { toilet.number } { toilet.city }'
     location = geolocator.geocode(address)
 
@@ -103,13 +105,13 @@ def map_view(request):
 
   for toilet in toilets:
     address = toilet.street, toilet.number, toilet.city
-    geolocator = Nominatim()
+    geolocator = Nominatim(timeout=10)
     address = f'{ toilet.street } { toilet.number } { toilet.city }'
     location = geolocator.geocode(address)
 
     icon = folium.Icon(color='red', icon='none')
-    popup = folium.Popup(html = f'<div class="popup-wrapper"> <h4>Location: { toilet.street } { toilet.number }, { toilet.city }</h4> <p>Price: €{ toilet.price_in_EUR }</p> <p>Clean: { toilet.cleaned }</p> <p>Wheelchair: { toilet.wheelchair_accessible }</p> </div>' if toilet.number else f'<div class="popup-wrapper"> <h4>Location: { toilet.street }, { toilet.city }</h4> <p>Price: €{ toilet.price_in_EUR }</p> <p>Clean: { toilet.cleaned }</p> <p>Wheelchair: { toilet.wheelchair_accessible }</p> </div>', max_width = 200, min_width = 200)
-    tooltip = f'{ toilet.street } { toilet.number }, { toilet.city }' if toilet.number else f'{ toilet.street }, { toilet.city }'
+    popup = folium.Popup(html = f'<div class="popup-wrapper"> <h4>Location: { toilet.street.capitalize() } { toilet.number }, { toilet.city }</h4> <p>Price: €{ toilet.price_in_EUR }</p> <p>Clean: { toilet.cleaned }</p> <p>Wheelchair: { toilet.wheelchair_accessible }</p> </div>' if toilet.number else f'<div class="popup-wrapper"> <h4>Location: { toilet.street }, { toilet.city }</h4> <p>Price: €{ toilet.price_in_EUR }</p> <p>Clean: { toilet.cleaned }</p> <p>Wheelchair: { toilet.wheelchair_accessible }</p> </div>', max_width = 200, min_width = 200)
+    tooltip = f'{ toilet.street.capitalize() } { toilet.number }, { toilet.city }' if toilet.number else f'{ toilet.street }, { toilet.city }'
 
     folium.Marker([location.latitude, location.longitude], popup = popup, tooltip = tooltip, icon = icon).add_to(map)
 

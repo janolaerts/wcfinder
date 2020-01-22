@@ -11,7 +11,7 @@
           <div class="card">
             <div class="card-content">
               <div class="card-title">
-                <h1 class="red-text text-lighten-2">{{ toilet.street }} {% if toilet.number %} {{ toilet.number }} {% endif %}</h1>
+                <h1 class="red-text text-lighten-2">{{ toilet.street.capitalize }} {% if toilet.number %} {{ toilet.number }} {% endif %}</h1>
               </div>
               {{ toilet.map | safe }}
               <div class="card-action row">
@@ -23,7 +23,7 @@
                 </a>
 
                 <!--<div class="info-wrapper col s6">-->
-                  <h2 class="red-text text-lighten-2 col s2 push-s1">€{{ toilet.price }}</h2>
+                  <h2 class="red-text text-lighten-2 col s2 push-s1">€{{ toilet.price_in_EUR }}</h2>
                   {% if toilet.cleaned == 'Yes' %}
                     <i class="material-icons red-text text-lighten-2 col s2 push-s1">star_outline</i>
                   {% endif %}

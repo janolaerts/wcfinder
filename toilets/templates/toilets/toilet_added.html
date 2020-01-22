@@ -9,8 +9,8 @@
 
     <div class="card center-align">
       <div class="card-content">
-        <h1 class="red-text text-lighten-2">{{ toilet.street }} {% if toilet.number %} {{ toilet.number }} {% endif %}, {{ toilet.city }}</h1>
-        {% if toilet.number %}<p class="red-text text-lighten-2">Reference: {{ toilet.reference }}</p> {% endif %}
+        <h1 class="red-text text-lighten-2">{{ toilet.street.capitalize }} {% if toilet.number %} {{ toilet.number }} {% endif %}, {{ toilet.city }}</h1>
+        {% if toilet.number %}<p class="red-text text-lighten-2">Price: {{ toilet.price_in_EUR }} Clean: {{ toilet.cleaned }} Wheelchair: {{ toilet.wheelchair_accessible }}</p> {% endif %}
       </div>
     </div>
 
